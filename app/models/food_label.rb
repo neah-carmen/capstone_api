@@ -1,0 +1,2 @@
+class FoodLabel < ApplicationRecord
+end
