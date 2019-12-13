@@ -1,6 +1,7 @@
 class Api::EdiblesController < ApplicationController
   def index
-    render json: { message: "index" }
+    @edibles = Edible.all
+    render "index.json.jb"
   end
 
   def create
