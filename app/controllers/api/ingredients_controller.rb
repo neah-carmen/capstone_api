@@ -18,7 +18,10 @@ class Api::IngredientsController < ApplicationController
   end
 
   def update
-    render json: { message: "update action" }
+    @ingredient = Ingredient.find_by(id: params[:id])
+    @ingredient.name = params[:name] || @ingredient.name
+    @ingredient.save
+    render "show.json.jb"
   end
 
   def destroy
