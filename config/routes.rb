@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     patch "/ingredients/:id" => "ingredients#update"
     delete "/ingredients/:id" => "ingredients#destroy"
 
+    get "/food_labels" => "food_labels#index"
+    post "/food_labels" => "food_labels#create"
+    get "/food_labels/:id" => "food_labels#show"
+    patch "/food_labels/:id" => "food_labels#update"
+    delete "/food_labels/:id" => "food_labels#destroy"
+
     post "/users" => "users#create"
 
     post "/sessions" => "sessions#create"
