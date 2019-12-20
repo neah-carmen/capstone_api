@@ -14,7 +14,8 @@ class Api::EdiblesController < ApplicationController
   end
 
   def show
-    render json: { message: "show" }
+    @edible = Edible.find_by(id: params[:id])
+    render "show.json.jb"
   end
 
   def update
