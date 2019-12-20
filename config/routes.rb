@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get "/edibles" => "edibles#index"
+    post "/edibles" => "edibles#create"
+    get "/edibles/:id" => "edibles#show"
   end
 end

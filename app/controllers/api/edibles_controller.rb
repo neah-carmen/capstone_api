@@ -5,7 +5,12 @@ class Api::EdiblesController < ApplicationController
   end
 
   def create
-    render json: { message: "created" }
+    @edible = Edible.new(
+      name: params[:name],
+      upc: params[:upc],
+    )
+    @edible.save
+    render "show.json.jb"
   end
 
   def show
