@@ -25,6 +25,8 @@ class Api::IngredientsController < ApplicationController
   end
 
   def destroy
-    render json: { message: "destroy action" }
+    @ingredient = Ingredient.find_by(id: params[:id])
+    @ingredient.destroy
+    render json: { message: "Ingredient has been deleted!" }
   end
 end
