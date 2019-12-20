@@ -1,10 +1,16 @@
 class Api::FoodLabelsController < ApplicationController
   def index
-    render json: { message: "index action" }
+    @food_labels = FoodLabel.all
+    render "index.json.jb"
   end
 
   def create
-    render json: { message: "create action" }
+    @food_label = FoodLabel.new(
+      edible_id: params[:edible_id],
+      ingredient_id: params[:ingredient_id]
+    )
+    @food_label.save
+    render "show.json.jb"
   end
 
   def show
