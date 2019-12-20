@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     get "/edibles/:id" => "edibles#show"
     patch "/edibles/:id" => "edibles#update"
     delete "/edibles/:id" => "edibles#destroy"
+
+    post "/users" => "users#create"
   end
 end
