@@ -7,14 +7,15 @@ class Api::FoodLabelsController < ApplicationController
   def create
     @food_label = FoodLabel.new(
       edible_id: params[:edible_id],
-      ingredient_id: params[:ingredient_id]
+      ingredient_id: params[:ingredient_id],
     )
     @food_label.save
     render "show.json.jb"
   end
 
   def show
-    render json: { message: "show action" }
+    @food_label = FoodLabel.find_by(id: params[:id])
+    render "show.json.jb"
   end
 
   def update
