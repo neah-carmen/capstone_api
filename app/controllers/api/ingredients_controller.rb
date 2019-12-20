@@ -1,6 +1,7 @@
 class Api::IngredientsController < ApplicationController
   def index
-    render json: { message: "index action" }
+    @ingredients = Ingredient.all
+    render "index.json.jb"
   end
 
   def create
