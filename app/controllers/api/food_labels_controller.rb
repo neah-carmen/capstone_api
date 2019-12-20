@@ -27,6 +27,8 @@ class Api::FoodLabelsController < ApplicationController
   end
 
   def destroy
-    render json: { message: "destroy action" }
+    @food_label = FoodLabel.find_by(id: params[:id])
+    @food_label.destroy
+    render json: { message: "Food Label has been deleted!" }
   end
 end
