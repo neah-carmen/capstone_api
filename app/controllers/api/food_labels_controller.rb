@@ -19,7 +19,11 @@ class Api::FoodLabelsController < ApplicationController
   end
 
   def update
-    render json: { message: "update action" }
+    @food_label = FoodLabel.find_by(id: params[:id])
+    @food_label.edible_id = params[:edible_id] || @food_label.edible_id
+    @food_label.ingredient_id = params[:ingredient_id] || @food_label.ingredient_id
+    @food_label.save
+    render "show.json.jb"
   end
 
   def destroy
