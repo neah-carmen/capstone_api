@@ -13,7 +13,8 @@ class Api::IngredientsController < ApplicationController
   end
 
   def show
-    render json: { message: "show action" }
+    @ingredient = Ingredient.find_by(id: params[:id])
+    render "show.json.jb"
   end
 
   def update
