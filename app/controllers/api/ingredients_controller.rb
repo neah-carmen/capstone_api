@@ -4,7 +4,11 @@ class Api::IngredientsController < ApplicationController
   end
 
   def create
-    render json: { message: "create action" }
+    @ingredient = Ingredient.new(
+      name: params[:name],
+    )
+    @ingredient.save
+    render "show.json.jb"
   end
 
   def show
