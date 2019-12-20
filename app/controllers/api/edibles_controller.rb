@@ -27,6 +27,8 @@ class Api::EdiblesController < ApplicationController
   end
 
   def destroy
-    render json: { message: "destroyed" }
+    @edible = Edible.find_by(id: params[:id])
+    @edible.destroy
+    render json: { message: "Edible has been deleted!" }
   end
 end
