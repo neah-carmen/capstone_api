@@ -19,7 +19,11 @@ class Api::EdiblesController < ApplicationController
   end
 
   def update
-    render json: { message: "updated" }
+    @edible = Edible.find_by(id: params[:id])
+    @edible.name = params[:name] || @edible.name
+    @edible.upc = params[:upc] || @edible.upc
+    @edible.save
+    render "show.json.jb"
   end
 
   def destroy

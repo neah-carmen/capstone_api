@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     get "/edibles" => "edibles#index"
     post "/edibles" => "edibles#create"
     get "/edibles/:id" => "edibles#show"
+    patch "/edibles/:id" => "edibles#update"
   end
 end
