@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     delete "/edibles/:id" => "edibles#destroy"
 
     post "/users" => "users#create"
+
+    post "/sessions" => "sessions#create"
   end
 end
