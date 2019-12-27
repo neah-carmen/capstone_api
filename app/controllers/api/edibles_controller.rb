@@ -1,4 +1,5 @@
 class Api::EdiblesController < ApplicationController
+  before_action :authenticate_user
 
   def index
     @edibles = Edible.all
@@ -9,6 +10,7 @@ class Api::EdiblesController < ApplicationController
     @edible = Edible.new(
       name: params[:name],
       upc: params[:upc],
+      user_id: current_user.id,
     )
     if @edible.save
       ingredient = Ingredient.find_or_create_by(name: params[:ingredient_name], is_vegetarian: params[:is_vegetarian], is_vegan: params[:is_vegan])
