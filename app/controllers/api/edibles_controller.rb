@@ -1,4 +1,5 @@
 class Api::EdiblesController < ApplicationController
+
   def index
     @edibles = Edible.all
     render "index.json.jb"
@@ -10,8 +11,14 @@ class Api::EdiblesController < ApplicationController
       upc: params[:upc],
     )
     if @edible.save
-      ingredient = Ingredient.find_or_create_by(name: params[:ingredient_name], not_vegetarian: params[:not_vegetarian], not_vegan: params[:not_vegan])
-      ingredient.save
+      ingredient = Ingredient.find_or_create_by(name: params[:ingredient_name], is_vegetarian: params[:is_vegetarian], is_vegan: params[:is_vegan])
+      if ingredient.save
+        food_label = FoodLabel.new(
+          edible_id: @edible.id,
+          ingredient_id: ingredient.id,
+        )
+        food_label.save
+      end
       render "show.json.jb"
     end
   end
