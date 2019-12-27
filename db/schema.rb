@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_031443) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.string "not_vegetarian"
-    t.string "not_vegan"
+    t.string "is_vegetarian"
+    t.string "is_vegan"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
