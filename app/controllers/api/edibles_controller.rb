@@ -9,8 +9,11 @@ class Api::EdiblesController < ApplicationController
       name: params[:name],
       upc: params[:upc],
     )
-    @edible.save
-    render "show.json.jb"
+    if @edible.save
+      ingredient = Ingredient.find_or_create_by(name: params[:ingredient_name], not_vegetarian: params[:not_vegetarian], not_vegan: params[:not_vegan])
+      ingredient.save
+      render "show.json.jb"
+    end
   end
 
   def show
