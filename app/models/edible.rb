@@ -8,7 +8,7 @@ class Edible < ApplicationRecord
     check = "not checked"
     ingredients_list = self.ingredients
     ingredients_list.each do |ingredient|
-      if !ingredient.is_vegetarian
+      if ingredient.is_vegetarian == "no"
         check = "no"
         break
       else
@@ -23,7 +23,7 @@ class Edible < ApplicationRecord
     check = "not checked"
     ingredients_list = self.ingredients
     ingredients_list.each do |ingredient|
-      if !ingredient.is_vegan
+      if ingredient.is_vegan == "no"
         check = "no"
         break
       else

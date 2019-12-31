@@ -10,5 +10,14 @@ RSpec.describe Edible, type: :model do
       test_edible.is_vegetarian?
       expect(test_edible.is_vegetarian).to eq("yes")
     end
+
+    it "should set the value of is_vegetarian to 'no' if all of the ingredients of an Edible are vegetarian" do
+      test_user = User.create(username: "test", email: "test@email.com", password: "password")
+      test_ingredient = Ingredient.create(name: "Gelatin", is_vegetarian: "no")
+      test_edible = Edible.create(name: "not_vegetarian", user_id: test_user.id)
+      FoodLabel.create(edible_id: test_edible.id, ingredient_id: test_ingredient.id)
+      test_edible.is_vegetarian?
+      expect(test_edible.is_vegetarian).to eq("no")
+    end
   end
 end
