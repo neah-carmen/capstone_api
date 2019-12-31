@@ -7,12 +7,11 @@ class Api::IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(
       name: params[:name],
-      is_vegetarian: params[:is_vegetarian],
-      is_vegan: params[:is_vegan],
     )
-    @ingredient.format_params
-    @ingredient.save
-    render "show.json.jb"
+    if @ingredient.save
+      @ingredient.format_params(params[:is_vegetarian], params[:is_vegan])
+      render "show.json.jb"
+    end
   end
 
   def show
@@ -25,8 +24,10 @@ class Api::IngredientsController < ApplicationController
     @ingredient.name = params[:name] || @ingredient.name
     @ingredient.is_vegetarian = params[:is_vegetarian] || @ingredient.is_vegetarian
     @ingredient.is_vegan = params[:is_vegan] || @ingredient.is_vegan
-    @ingredient.save
-    render "show.json.jb"
+    if @ingredient.save
+      @ingredient.format_params(params[:is_vegetarian], params[:is_vegan])
+      render "show.json.jb"
+    end
   end
 
   def destroy
