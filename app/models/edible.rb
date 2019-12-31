@@ -18,4 +18,19 @@ class Edible < ApplicationRecord
     self.is_vegetarian = check
     self.save
   end
+
+  def is_vegan?
+    check = "not checked"
+    ingredients_list = self.ingredients
+    ingredients_list.each do |ingredient|
+      if !ingredient.is_vegan
+        check = "no"
+        break
+      else
+        check = "yes"
+      end
+    end
+    self.is_vegan = check
+    self.save
+  end
 end
