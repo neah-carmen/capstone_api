@@ -16,6 +16,20 @@ RSpec.describe Edible, type: :model do
     end
   end
 
+  describe "#ingredients" do
+    it "return an array of ingredients from the Ingredients model that the Edible model is associated to via the FoodLabel join table" do
+      test_user = User.create(username: "test", email: "test@email.com", password: "password")
+      test_ingredient1 = Ingredient.create(name: "Corn Syrup")
+      test_ingredient2 = Ingredient.create(name: "Flour")
+      test_ingredient3 = Ingredient.create(name: "Water")
+      test_edible = Edible.create(name: "test_vegetarian", user_id: test_user.id)
+      FoodLabel.create(edible_id: test_edible.id, ingredient_id: test_ingredient1.id)
+      FoodLabel.create(edible_id: test_edible.id, ingredient_id: test_ingredient2.id)
+      FoodLabel.create(edible_id: test_edible.id, ingredient_id: test_ingredient3.id)
+      expect(test_edible.ingredients.length).to eq(3)
+    end
+  end
+
   describe "#is_vegetarian?" do
     it "should set the value of is_vegetarian to 'yes' if all of the ingredients of an Edible are vegetarian" do
       test_user = User.create(username: "test", email: "test@email.com", password: "password")
