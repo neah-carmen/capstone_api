@@ -10,6 +10,7 @@ class Api::IngredientsController < ApplicationController
       is_vegetarian: params[:is_vegetarian],
       is_vegan: params[:is_vegan],
     )
+    @ingredient.format_params
     @ingredient.save
     render "show.json.jb"
   end
