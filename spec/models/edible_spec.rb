@@ -1,6 +1,21 @@
 require "rails_helper"
 
 RSpec.describe Edible, type: :model do
+  describe "#user_id" do
+    it "should belong to the user that created the new edible" do
+      test_user = User.create(username: "test", email: "test@email.com", password: "password")
+      test_edible = Edible.create(name: "test_vegetarian", user_id: test_user.id)
+      expect(test_edible.user_id).to eq(test_user.id)
+    end
+  end
+
+  describe "#user_id" do
+    it "should not let you create a new edible if there is no associated 'user_id'" do
+      test_edible = Edible.create(name: "test_vegetarian")
+      expect(test_edible.id).to eq(nil)
+    end
+  end
+
   describe "#is_vegetarian?" do
     it "should set the value of is_vegetarian to 'yes' if all of the ingredients of an Edible are vegetarian" do
       test_user = User.create(username: "test", email: "test@email.com", password: "password")
