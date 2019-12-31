@@ -5,20 +5,17 @@ class Edible < ApplicationRecord
   has_many :ingredients, through: :food_labels
 
   def is_vegetarian?
-    check = nil
+    check = "not checked"
     ingredients_list = self.ingredients
     ingredients_list.each do |ingredient|
       if !ingredient.is_vegetarian
-        check = false
+        check = "no"
         break
       else
-        check = true
+        check = "yes"
       end
     end
-    if check == true
-      puts "is vegetarian"
-    else
-      puts "not vegetarian"
-    end
+    self.is_vegetarian = check
+    self.save
   end
 end
