@@ -13,8 +13,9 @@ class Api::EdiblesController < ApplicationController
       user_id: current_user.id,
     )
     if @edible.save
-      params[:ingredients].each { |ingredient_name|
-        ingredient = Ingredient.find_or_create_by(name: ingredient_name, is_vegetarian: params[:is_vegetarian], is_vegan: params[:is_vegan])
+      params[:ingredients].zip(params[:is_vegetarian], params[:is_vegan]).each { |ingredient_name, is_vegetarian, is_vegan|
+        ingredient = Ingredient.find_or_create_by(name: ingredient_name, is_vegetarian: is_vegetarian, is_vegan: is_vegan)
+        # ingredient = Ingredient.find_or_create_by(name: ingredient_name)
         if ingredient.save
           food_label = FoodLabel.new(
             edible_id: @edible.id,
