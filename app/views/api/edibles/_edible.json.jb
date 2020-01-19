@@ -1,0 +1,17 @@
+{
+  id: edible.id,
+  name: edible.name,
+  upc: edible.upc,
+  user_id: edible.user_id,
+  is_vegetarian: edible.is_vegetarian,
+  is_vegan: edible.is_vegan,
+  images: edible.label_images.map do |image|
+    { id: image.id,
+     url: image.url,
+     edible_id: image.edible_id }
+  end,
+  ingredients: edible.ingredients.map do |ingredient|
+    { id: ingredient.id,
+      name: ingredient.name }
+  end,
+}

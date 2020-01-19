@@ -1,1 +1,1 @@
-@edible
+render partial: "edible.json.jb", locals: { edible: @edible }

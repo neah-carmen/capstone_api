@@ -1,1 +1,3 @@
-@edibles
+@edibles.map do |edible|
+  render partial: "edible.json.jb", locals: { edible: edible }
+end
