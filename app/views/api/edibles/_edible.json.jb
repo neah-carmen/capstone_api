@@ -7,11 +7,13 @@
   is_vegan: edible.is_vegan,
   images: edible.label_images.map do |image|
     { id: image.id,
-     url: image.url,
-     edible_id: image.edible_id }
+      url: image.url,
+      edible_id: image.edible_id }
   end,
   ingredients: edible.ingredients.map do |ingredient|
     { id: ingredient.id,
-      name: ingredient.name }
+      name: ingredient.name,
+      is_vegetarian: ingredient.is_vegetarian,
+      is_vegan: ingredient.is_vegan }
   end,
 }
