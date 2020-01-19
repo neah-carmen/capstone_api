@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2020_01_19_165232) do
     t.integer "user_id"
     t.integer "mod_id"
     t.boolean "verified"
-    t.string "is_vegetarian"
-    t.string "is_vegan"
+    t.boolean "is_vegetarian"
+    t.boolean "is_vegan"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_01_19_165232) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.string "is_vegetarian"
-    t.string "is_vegan"
+    t.boolean "is_vegetarian"
+    t.boolean "is_vegan"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
