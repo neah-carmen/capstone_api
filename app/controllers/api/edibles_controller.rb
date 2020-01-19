@@ -7,15 +7,19 @@ class Api::EdiblesController < ApplicationController
   end
 
   def create
+    response = Cloudinary::Uploader.upload(params[:image])
+    cloudinary_url = response["secure_url"]
+
     @edible = Edible.new(
       name: params[:name],
       upc: params[:upc],
       user_id: current_user.id,
     )
     if @edible.save
+      image_url = LabelImage.new(url: cloudinary_url, edible_id: @edible.id)
+      image_url.save
       params[:ingredients].zip(params[:is_vegetarian], params[:is_vegan]).each { |ingredient_name, is_vegetarian, is_vegan|
         ingredient = Ingredient.find_or_create_by(name: ingredient_name, is_vegetarian: is_vegetarian, is_vegan: is_vegan)
-        # ingredient = Ingredient.find_or_create_by(name: ingredient_name)
         if ingredient.save
           food_label = FoodLabel.new(
             edible_id: @edible.id,
