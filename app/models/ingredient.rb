@@ -3,19 +3,15 @@ class Ingredient < ApplicationRecord
   has_many :edibles, through: :food_labels
 
   def format_params(params_vegetarian, params_vegan)
-    if params_vegetarian.downcase == "yes"
-      self.is_vegetarian = "yes"
-    elsif params_vegetarian.downcase == "no"
-      self.is_vegetarian = "no"
-    else
-      self.is_vegetarian = "maybe"
+    if params_vegetarian.downcase == "true"
+      self.is_vegetarian = true
+    elsif params_vegetarian.downcase == "false"
+      self.is_vegetarian = false
     end
-    if params_vegan.downcase == "yes"
-      self.is_vegan = "yes"
-    elsif params_vegan.downcase == "no"
-      self.is_vegan = "no"
-    else
-      self.is_vegan = "maybe"
+    if params_vegan.downcase == "true"
+      self.is_vegan = true
+    elsif params_vegan.downcase == "false"
+      self.is_vegan = false
     end
     self.save
   end
