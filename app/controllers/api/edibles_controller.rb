@@ -28,6 +28,8 @@ class Api::EdiblesController < ApplicationController
           food_label.save
         end
       }
+      @edible.is_vegetarian?
+      @edible.is_vegan?
       render "show.json.jb"
     end
   end
