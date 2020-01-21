@@ -11,7 +11,7 @@ class Api::IngredientsController < ApplicationController
       is_vegan: params[:is_vegan],
     )
     if @ingredient.save
-      # @ingredient.format_params(params[:is_vegetarian], params[:is_vegan])
+      @ingredient.format_params(params[:is_vegetarian], params[:is_vegan])
       render "show.json.jb"
     end
   end
