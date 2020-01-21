@@ -43,7 +43,10 @@ class Api::EdiblesController < ApplicationController
     @edible = Edible.find_by(id: params[:id])
     @edible.name = params[:name] || @edible.name
     @edible.upc = params[:upc] || @edible.upc
-    @edible.save
+    if @edible.save
+      @edible.is_vegetarian?
+      @edible.is_vegan?
+    end
     render "show.json.jb"
   end
 
