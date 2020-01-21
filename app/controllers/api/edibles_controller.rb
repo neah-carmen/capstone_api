@@ -56,6 +56,9 @@ class Api::EdiblesController < ApplicationController
       @edible.food_labels.each do | join_table_data |
         join_table_data.destroy
       end
+      @edible.label_images.each do | cloudinary_reference |
+        cloudinary_reference.destroy
+      end
     end
     render json: { message: "Edible has been deleted!" }
   end
