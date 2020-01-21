@@ -52,7 +52,11 @@ class Api::EdiblesController < ApplicationController
 
   def destroy
     @edible = Edible.find_by(id: params[:id])
-    @edible.destroy
+    if @edible.destroy
+      @edible.food_labels.each do | join_table_data |
+        join_table_data.destroy
+      end
+    end
     render json: { message: "Edible has been deleted!" }
   end
 end
