@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     post "/users" => "users#create"
 
     post "/sessions" => "sessions#create"
+
+    post "/label_reader" => "label_reader#show"
   end
 end
