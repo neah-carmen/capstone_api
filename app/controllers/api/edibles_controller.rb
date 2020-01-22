@@ -7,8 +7,12 @@ class Api::EdiblesController < ApplicationController
   end
 
   def create
-    response = Cloudinary::Uploader.upload(params[:image])
-    cloudinary_url = response["secure_url"]
+    if params[:image].instance_of?(String) #&& params[:image].start_with?("https://res.cloudinary.com")
+      cloudinary_url = params[:image]
+    else
+      response = Cloudinary::Uploader.upload(params[:image])
+      cloudinary_url = response["secure_url"]
+    end
 
     @edible = Edible.new(
       name: params[:name],
@@ -53,10 +57,10 @@ class Api::EdiblesController < ApplicationController
   def destroy
     @edible = Edible.find_by(id: params[:id])
     if @edible.destroy
-      @edible.food_labels.each do | join_table_data |
+      @edible.food_labels.each do |join_table_data|
         join_table_data.destroy
       end
-      @edible.label_images.each do | cloudinary_reference |
+      @edible.label_images.each do |cloudinary_reference|
         cloudinary_reference.destroy
       end
     end
