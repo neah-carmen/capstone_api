@@ -1,5 +1,5 @@
 {
   image_url: @cloudinary_url,
-  text_data: @display,
+  label_lines: @label_lines,
   ingredients: @ingredients,
 }

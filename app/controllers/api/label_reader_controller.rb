@@ -10,13 +10,13 @@ class Api::LabelReaderController < ApplicationController
     label_extract = new_scan.to_s
     label_extract = label_extract[13..-1]
 
-    @display = []
+    @label_lines = []
     @ingredients = []
 
     label_extract.split("\n").each do |line|
-      @display << line
+      @label_lines << line
     end
-    @display.delete("\f")
+    @label_lines.delete("\f")
 
     label_extract.split(/\s*([,;\r\n]+|\s\s)\s*/).each do |ingredient|
       @ingredients << ingredient
