@@ -43,13 +43,23 @@ class Api::EdiblesController < ApplicationController
     @edible = Edible.find_by(id: params[:id])
     @edible.name = params[:name] || @edible.name
     @edible.upc = params[:upc] || @edible.upc
-    @edible.save
+    if @edible.save
+      @edible.is_vegetarian?
+      @edible.is_vegan?
+    end
     render "show.json.jb"
   end
 
   def destroy
     @edible = Edible.find_by(id: params[:id])
-    @edible.destroy
+    if @edible.destroy
+      @edible.food_labels.each do | join_table_data |
+        join_table_data.destroy
+      end
+      @edible.label_images.each do | cloudinary_reference |
+        cloudinary_reference.destroy
+      end
+    end
     render json: { message: "Edible has been deleted!" }
   end
 end
