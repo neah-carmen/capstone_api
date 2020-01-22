@@ -126,6 +126,8 @@ Ingredient.create(name: "Natural and Artificial Flavor", is_vegetarian: true, is
 Ingredient.create(name: "Acacia (Gum Arabic)", is_vegetarian: true, is_vegan: true)
 Ingredient.create(name: "Carnauba Wax", is_vegetarian: true, is_vegan: true)
 Ingredient.create(name: "White Mineral Oil", is_vegetarian: true, is_vegan: true)
+Ingredient.create(name: "Calcium Stearate", is_vegetarian: true, is_vegan: true)
+Ingredient.create(name: "Blue 2", is_vegetarian: true, is_vegan: true)
 
 Edible.create(name: "Sour Patch Kids", upc: "038678561126", user_id: 3)
 LabelImage.create(url: "https://res.cloudinary.com/neah-dev/image/upload/v1579719816/xijjv1kjvd857xyoawnu.jpg", edible_id: 1)
@@ -169,9 +171,16 @@ FoodLabel.create(edible_id: 3, ingredient_id: 115)
 FoodLabel.create(edible_id: 3, ingredient_id: 12)
 FoodLabel.create(edible_id: 3, ingredient_id: 116)
 
-Edible.create(name: "Twizzlers", upc: "038000138605", user_id: 3)
-
 Edible.create(name: "Smarties", upc: "038000138607", user_id: 3)
+LabelImage.create(url: "https://res.cloudinary.com/neah-dev/image/upload/v1579720872/e5micqofqtlrlmef9mra.png", edible_id: 4)
+FoodLabel.create(edible_id: 4, ingredient_id: 107)
+FoodLabel.create(edible_id: 4, ingredient_id: 8)
+FoodLabel.create(edible_id: 4, ingredient_id: 117)
+FoodLabel.create(edible_id: 4, ingredient_id: 113)
+FoodLabel.create(edible_id: 4, ingredient_id: 10)
+FoodLabel.create(edible_id: 4, ingredient_id: 11)
+FoodLabel.create(edible_id: 4, ingredient_id: 12)
+FoodLabel.create(edible_id: 4, ingredient_id: 114)
 
 Edible.create(name: "Swedish Fish", upc: "038000138611", user_id: 3)
 
@@ -185,8 +194,7 @@ Edible.create(name: "Top Ramen Soy Flavor", upc: "038678561125", user_id: 3)
 
 Edible.create(name: "Zotz", upc: "038678561126", user_id: 3)
 
-Edible.create(name: "Sour Punch Straws", upc: "038678561127", user_id: 3)
+Edible.create(name: "Twizzlers", upc: "034000519224", user_id: 3)
+LabelImage.create(url: "https://res.cloudinary.com/neah-dev/image/upload/v1579720639/qtxc5o0n0oc8xrobersu.png", edible_id: 11)
 
-LabelImage.create(url: "https://res.cloudinary.com/neah-dev/image/upload/v1579469493/tia95kfahpenwo5rf02t.jpg", edible_id: 3)
-LabelImage.create(url: "https://res.cloudinary.com/neah-dev/image/upload/v1579469493/xiqrrhn2ahklbyujtviq.png", edible_id: 4)
-LabelImage.create(url: "https://res.cloudinary.com/neah-dev/image/upload/v1579469493/jxtkwx4zvs9vxabssce9.jpg", edible_id: 11)
+Edible.create(name: "Sour Punch Straws", upc: "038678561127", user_id: 3)
