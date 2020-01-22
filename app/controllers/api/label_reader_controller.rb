@@ -1,7 +1,7 @@
 class Api::LabelReaderController < ApplicationController
   require "rtesseract"
 
-  def show
+  def scan
     response = Cloudinary::Uploader.upload(params[:image])
     @cloudinary_url = response["secure_url"]
     new_scan = RTesseract.new(@cloudinary_url)
