@@ -25,6 +25,6 @@ Rails.application.routes.draw do
 
     post "/sessions" => "sessions#create"
 
-    post "/label_reader" => "label_reader#show"
+    post "/label_reader" => "label_reader#scan"
   end
 end
